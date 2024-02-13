@@ -1,0 +1,353 @@
+ 
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Common Words 3</title> <meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!-- Option 1: Include in HTML -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.2.2/font/bootstrap-icons.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        
+        function selectRandomLine() {
+            var lines = `
+Be
+have
+  do
+  say
+  go
+  can
+  get
+  would
+  make
+ know
+ will
+ think
+ take
+ see
+ come
+ could
+ want
+ look
+ use
+ find
+ give
+ tell
+ work
+ may
+ should
+ call
+ try
+ ask
+ need
+ feel
+ become
+ leave
+ put
+ mean
+ keep
+ let
+ begin
+ seem
+ help
+ talk
+ turn
+ start
+ might
+ show
+ hear
+ play
+ run
+ move
+ like
+ live
+ believe
+ hold
+ bring
+ happen
+ must
+ write
+ provide
+ sit
+ stand
+ lose
+ pay
+ meet
+ include
+ continue
+ set
+ learn
+ change
+ lead
+ understand
+ watch
+ follow
+ stop
+ create
+ speak
+ read
+ allow
+ add
+ spend
+ grow
+ open
+ walk
+ win
+ offer
+ remember
+ love
+ consider
+ appear
+ buy
+ wait
+ serve
+ die
+ send
+ expect
+ build
+ stay
+ fall
+ cut
+ reach
+ kill
+ remain
+up
+   so
+   out
+   just
+   now
+   how
+   then
+   more
+   also
+  here
+  well
+  only
+  very
+  even
+  back
+  there
+  down
+  still
+  in
+  as
+  to
+  when
+  never
+  really
+  most
+  on
+  why
+  about
+  over
+  again
+  where
+  right
+  off
+  always
+  today
+  all
+  far
+  long
+  away
+  yet
+  often
+  ever
+  however
+  almost
+  later
+  much
+  once
+  least
+  ago
+  together
+  around
+  already
+  enough
+  both
+  maybe
+  actually
+  probably
+  home
+  of course
+  perhaps
+  little
+  else
+  sometimes
+  finally
+  less
+  better
+  early
+  especially
+  either
+  quite
+  simply
+  nearly
+  soon
+  certainly
+  quickly
+  no
+  recently
+  before
+  usually
+  thus
+  exactly
+  hard
+  particularly
+  pretty
+  forward
+  ok
+  clearly
+  indeed
+  rather
+  that
+  tonight
+  close
+  suddenly
+  best
+  instead
+  ahead
+  fast
+  alone
+  eventually
+ directly
+            `; // Replace with your lines of text
+            
+            var linesArray = lines.split('\n');
+            var selectedLine = "";
+
+            while (selectedLine.trim() === "") {
+                var randomIndex = Math.floor(Math.random() * linesArray.length);
+                selectedLine = linesArray[randomIndex];
+            }
+
+            //document.getElementById("result").innerHTML += '<br><br>' + selectedLine;
+            document.getElementById("result").innerHTML = selectedLine;
+
+
+        }
+
+$(document).ready(function() {
+
+$('#startgame').click(function(){
+//$('body').append('random');
+startgame();
+
+});
+
+function startgame(){
+$('.btn-success').removeClass('btn-success');
+var random = Math.floor(Math.random() * 3);
+//$('body').append(random);
+if(random == 0){
+random = 1;
+}
+$('#match'+random).addClass('btn-success');
+}
+
+
+$('.matches').click(function(){
+ if($(this).hasClass('btn-success')){
+startgame();
+}
+});
+
+$('.next-line').click(function(){
+setInterval(nextline,2000);
+});
+function nextline(){
+ var random1 = Math.floor(Math.random() * 100);
+var random2 = Math.floor(Math.random() * 100);
+ $('#result').css('top',random1+'%');
+ $('#result').css('left',random2+'%');
+
+selectRandomLine();
+}
+
+
+});
+    </script>
+    <style>
+        html,body {
+            height: 100%;
+            margin: 0;
+            background: #dc3545;
+          
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-size: 2vh;
+            
+        }
+        button {
+          height: 4vh;
+          width: 25vh;
+          font-size: 2vh;
+      }
+ .obstacle {
+           position: absolute;
+           background: red
+           background-repeat: no-repeat;
+           background-size: contain;
+           width: 30px;
+           height: 30px;
+           z-index: 999;
+       }
+.matches{
+width:100px;
+height:50px;
+display:inline-block;
+}
+.game{
+text-align:center;
+margin-bottom: 10px;
+}
+#startgame,.btn{
+line-height: 5px;
+}
+.next-line{
+margin-left:30px;
+}
+#result{
+ position: absolute;
+ top: 5%;
+ left: 70%;
+ z-index: 9999;
+}
+    </style>
+</head>
+<body >
+<div class="alert alert-primary"  id="result" role="alert">
+     
+      </div>
+  <div class="card" style="width: 18rem;">
+    <!-- <img src="..." class="card-img-top" alt="..."> -->
+    <div class="card-body">
+      <h5 class="card-title">Common Words 3</h5>
+      <p class="card-text"></p>
+      <button class="btn btn-primary next-line" onclick="">Next Line</button>
+    </div>
+
+<div class="game">
+<button id="startgame" class="btn btn-primary mb-3">Start Game</button>
+
+
+<div>
+<button id="match1" class="btn btn-primary matches"></button>
+<button id="match2" class="btn btn-primary matches"></button>
+   </div>
+</div>
+
+
+  </div>
+    <!-- <p id="result"></p> -->
+</body>
+</html>
